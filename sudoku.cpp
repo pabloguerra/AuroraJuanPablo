@@ -77,10 +77,11 @@ void printBoard(vector< vector<int> >& board){
 }
 
 bool check(int value){
-    if (value<BOARDSIZE)
-      return false;
-    } else {
+    if (value<BOARDSIZE){
       return true;
+    } else {
+      cout << "Your answer is not valid. Please try again."
+      return false;
     }
 }
 

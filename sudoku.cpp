@@ -80,7 +80,7 @@ bool check(int value){
     if (value<BOARDSIZE){
       return true;
     } else {
-      cout << "Your answer is not valid. Please try again."
+      cout << "Your answer is not valid. Please try again." << endl;
       return false;
     }
 }
@@ -147,17 +147,15 @@ int main(int argc, char* argv[]) {
       do{
         cout << "Which row?" << endl;
         cin >> r;
-      } while (check(r)!= false)
+      } while (check(r)!= false);
       do{
         cout << "Wich column?"<< endl;
         cin >> c;
-       } while (check(c)!= false)
+      } while (check(c)!= false);
       if (Original[r][c]=!0){
         cout << "That is an original number and you can't erase it" << endl;
       } else { 
         theBoard [r][c] = 0;
-      }
-
       }
       continue;
     }

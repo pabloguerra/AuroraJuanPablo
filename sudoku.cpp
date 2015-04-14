@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
   // Here you provide a menu to the user to do what they want
   // The options are:
   createZeroBoard(theBoard);
-  populateBoardFromFile(copy,filename);
+  populateBoardFromFile(Original,filename);
 
   //    print (call the printBoard function)
   //    write (ask user what number they want to add and where), must accept only legal values

@@ -48,8 +48,8 @@ void populateBoardFromFile(vector< vector<int> >& board, string filename){
     for(int r = 0; r < BOARDSIZE ; r++){
       // grab a full line from the file
       for(int c = 0; c < BOARDSIZE ; c++){
-	infile >> cell;
-	board[r][c] = cell;
+  infile >> cell;
+  board[r][c] = cell;
       }
     }
   } else {
@@ -68,7 +68,7 @@ void printBoard(vector< vector<int> >& board){
   for(int r = 0; r < BOARDSIZE ; r++){
     for(int c = 0; c < BOARDSIZE ; c++){
       if(c > 0){
-	cout << " ";
+  cout << " ";
       }
       cout << board[r][c];
     }
@@ -111,10 +111,12 @@ int main(int argc, char* argv[]) {
 
   createZeroBoard(theBoard);
   populateBoardFromFile(theBoard,filename);
-
   cout << "Welcome to the Game of Sudoku" << endl;
   // Here you provide a menu to the user to do what they want
   // The options are:
+  createZeroBoard(theBoard);
+  populateBoardFromFile(copy,filename);
+
   //    print (call the printBoard function)
   //    write (ask user what number they want to add and where), must accept only legal values
   //    erase (ask user which position they want to erase), must not erase original values
@@ -128,6 +130,9 @@ int main(int argc, char* argv[]) {
       continue;
     }
     if(userChoice == "write"){
+      int row,col,num,
+      cout << "which row?";
+
       // ask user for position (row,column) and number
       // check if valid (legal) and modify the board or notify that the move is invalid
       continue;

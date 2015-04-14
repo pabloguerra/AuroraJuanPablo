@@ -160,11 +160,11 @@ int main(int argc, char* argv[]) {
       do{
         cout << "Which row?" << endl;
         cin >> r;
-      } while (check(r)!= false);
+      } while (check(r)!= true);
       do{
         cout << "Wich column?"<< endl;
         cin >> c;
-      } while (check(c)!= false);
+      } while (check(c)!= true);
       if (Original[r][c]=!0){
         cout << "That is an original number and you can't erase it" << endl;
       } else { 

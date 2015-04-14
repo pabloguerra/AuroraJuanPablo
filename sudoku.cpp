@@ -3,11 +3,11 @@
 //
 // Sudoku
 
-// Student Name
-// Student Number
+// Aurora Alvarado González
+// A01630329
 // and
-// Student Name
-// Student Number
+// Juan Pablo Santana González
+// A01229382
 
 // Standard libraries
 #include <string>
@@ -75,6 +75,14 @@ void printBoard(vector< vector<int> >& board){
     cout << endl;
   }
 }
+
+bool checkOriginal(vector< vector<int> >& board, vector< vector<int> >& original, int row, int col){
+    if (board [r][c] =! original[r][c]){
+      return false;
+    } else {
+      return true;
+    }
+}
 /*
  * Your main program goes here.
  * first get the parameters, check if parameter size is 2
@@ -86,6 +94,7 @@ int main(int argc, char* argv[]) {
   string filename;
 
   vector< vector<int> > theBoard(BOARDSIZE,vector<int>(BOARDSIZE));
+  vector< vector<int> > Original(BOARDSIZE,vector<int>(BOARDSIZE));
 
   switch(argc)
     {
@@ -124,8 +133,11 @@ int main(int argc, char* argv[]) {
       continue;
     }
     if(userChoice == "erase"){
-      // ask user for position (row,column) to erase
-      // check if valid (legal) and modify the board or notify that the move is invalid
+      int row, col;
+      cout << "Which row?" << endl;
+      cin >> row;
+      cout << "Wich column?"<< endl;
+      cin >> col;
       continue;
     }
     if(userChoice == "quit"){

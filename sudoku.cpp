@@ -152,6 +152,11 @@ int main(int argc, char* argv[]) {
         cout << "Which number?" << endl;
         cin >> n;
        }while (check(n) =! true);
+       if (Original[r][c]=! 0){
+         cout << "That is an original number and you can't erase it" << endl;
+       } else{
+        theBoard[r][c] = n;
+       }
 
       continue;
     }

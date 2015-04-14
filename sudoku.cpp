@@ -131,8 +131,13 @@ int main(int argc, char* argv[]) {
       continue;
     }
     if(userChoice == "write"){
-      int row,col,num,
-      cout << "which row?";
+      int row,col,num;
+      cout << "which row?" << endl;
+      cin >> row;
+      cout << "Which column?" << endl;
+      cin >> col;
+      cout << "Which number?" << endl;
+      cin >> num;
 
       continue;
     }

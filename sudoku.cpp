@@ -132,13 +132,26 @@ int main(int argc, char* argv[]) {
       continue;
     }
     if(userChoice == "write"){
-      int row,col,num;
+      int r,c,n;/*
       cout << "which row?" << endl;
       cin >> row;
       cout << "Which column?" << endl;
       cin >> col;
       cout << "Which number?" << endl;
-      cin >> num;
+      cin >> num;*/
+
+      do{
+        cout << "Which row?" << endl;
+        cin >> r;
+      } while (check(r)!= true);
+      do{
+        cout << "Wich column?"<< endl;
+        cin >> c;
+       } while (check(c)!= true);
+       do {
+        cout << "Which number?" << endl;
+        cin >> n;
+       }while (check(n) =! true);
 
       continue;
     }

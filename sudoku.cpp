@@ -76,13 +76,14 @@ void printBoard(vector< vector<int> >& board){
   }
 }
 
-bool checkOriginal(vector< vector<int> >& board, vector< vector<int> >& original, int row, int col){
-    if (board [r][c] =! original[r][c]){
+bool check(int value){
+    if (value<BOARDSIZE)
       return false;
     } else {
       return true;
     }
 }
+
 /*
  * Your main program goes here.
  * first get the parameters, check if parameter size is 2
@@ -133,16 +134,25 @@ int main(int argc, char* argv[]) {
       int row,col,num,
       cout << "which row?";
 
-      // ask user for position (row,column) and number
-      // check if valid (legal) and modify the board or notify that the move is invalid
       continue;
     }
     if(userChoice == "erase"){
-      int row, col;
-      cout << "Which row?" << endl;
-      cin >> row;
-      cout << "Wich column?"<< endl;
-      cin >> col;
+      int r, c;
+      do{
+        cout << "Which row?" << endl;
+        cin >> r;
+      } while (check(r)!= false)
+      do{
+        cout << "Wich column?"<< endl;
+        cin >> c;
+       } while (check(c)!= false)
+      if (Original[r][c]=!0){
+        cout << "That is an original number and you can't erase it" << endl;
+      } else { 
+        theBoard [r][c] = 0;
+      }
+
+      }
       continue;
     }
     if(userChoice == "quit"){

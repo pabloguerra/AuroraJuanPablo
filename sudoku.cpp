@@ -116,7 +116,7 @@ int main(int argc, char* argv[]) {
   cout << "Welcome to the Game of Sudoku" << endl;
   // Here you provide a menu to the user to do what they want
   // The options are:
-  createZeroBoard(theBoard);
+  createZeroBoard(Original);
   populateBoardFromFile(Original,filename);
 
   //    print (call the printBoard function)

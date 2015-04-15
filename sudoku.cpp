@@ -164,7 +164,7 @@ int main(int argc, char* argv[]) {
         cout << "Wich column?"<< endl;
         cin >> c;
       } while (check(c)!= true);
-      if (Original[r][c]=!0){
+      if (Original[r][c] != 0){
         cout << "That is an original number and you can't erase it" << endl;
       } else { 
         theBoard [r][c] = 0;

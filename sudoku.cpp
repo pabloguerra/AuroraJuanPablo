@@ -149,7 +149,11 @@ int main(int argc, char* argv[]) {
        if (Original[r][c]=! 0){
          cout << "That is an original number and you can't erase it" << endl;
        } else{
-        theBoard[r][c] = n;
+           if (theBoard[r][c]=! 0){
+             cout << "You already have a number there." << endl;
+           } else {
+              theBoard[r][c] = n;
+           }
        }
 
       continue;

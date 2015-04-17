@@ -142,9 +142,13 @@ int main(int argc, char* argv[]) {
         cout << "Wich column?"<< endl;
         cin >> c;
        } while (check(c)!= true);
+       if (Original[r][c]!= 0){
+         cout << "That is an original number and you can't change it" << endl;
+      } else {
        do {
         cout << "Which number?" << endl;
         cin >> n;
+<<<<<<< HEAD
        }while (check(n) =! true);
        if (Original[r][c]=! 0){
          cout << "That is an original number and you can't erase it" << endl;
@@ -154,6 +158,10 @@ int main(int argc, char* argv[]) {
            } else {
               theBoard[r][c] = n;
            }
+=======
+       }while (check(n) != true);
+        theBoard[r][c] = n;
+>>>>>>> origin/master
        }
 
       continue;
@@ -168,7 +176,7 @@ int main(int argc, char* argv[]) {
         cout << "Wich column?"<< endl;
         cin >> c;
       } while (check(c)!= true);
-      if (Original[r][c]=!0){
+      if (Original[r][c] != 0){
         cout << "That is an original number and you can't erase it" << endl;
       } else { 
         theBoard [r][c] = 0;

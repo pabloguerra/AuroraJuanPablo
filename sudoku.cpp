@@ -103,16 +103,22 @@ bool evaluate_rc(int n, int r, int c, vector< vector<int> >& theBoard){
 
 bool evaluate_q(int n, int r, int c, vector< vector<int> >& theBoard){
   int kc, kr, ir, ic;
+  if (r/3 ==0){
     ir=0;
   }
+  if (r/3 ==1){
     ir=3;
   }
+  if (r/3 ==2){
     ir=6;
   }
+  if (c/3 ==0){
     ic=0;
   }
+  if (c/3 ==1){
     ic=3;
   }
+  if (c/3 ==2){
     ic=6;
   }
   for(kc=0; kc < 3; kc++){
@@ -189,6 +195,7 @@ int main(int argc, char* argv[]) {
         do {
           cout << "Which number?" << endl;
           cin >> n;
+        }while (check(n-1) != true || evaluate_rc (n, r, c, theBoard) !=true || evaluate_q (n, r, c, theBoard) !=true );
         if (theBoard[r][c] != 0){
           cout << "You already have a number there." << endl;
         } else {

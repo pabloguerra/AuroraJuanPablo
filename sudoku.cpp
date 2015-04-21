@@ -85,6 +85,54 @@ bool check(int value){
     }
 }
 
+bool evaluate_rc(int n, int r, int c, vector< vector<int> >& theBoard){
+  for (int i=0; i<9; i++){
+    if (theBoard[r][i]==n){
+      cout << "Invalid movement. The number is repeated in that row." << endl;
+      return false;
+    }
+  }
+  for (int i=0; i<9; i++){
+    if (theBoard[i][c]==n){
+      cout << "Invalid movement. The number is repeated in that column." << endl;
+      return false;
+    }
+  }
+  return true;
+}
+
+bool evaluate_q(int n, int r, int c, vector< vector<int> >& theBoard){
+  int kc, kr, ir, ic;
+  if (r/3 ==0){
+    ir=0;
+  }
+  if (r/3 ==1){
+    ir=3;
+  }
+  if (r/3 ==2){
+    ir=6;
+  }
+  if (c/3 ==0){
+    ic=0;
+  }
+  if (c/3 ==1){
+    ic=3;
+  }
+  if (c/3 ==2){
+    ic=6;
+  }
+  for(kc=0; kc < 3; kc++){
+    for(kr=0; kr < 3; kr++){
+      if (theBoard [ir][ic]==n){
+        cout << "Invalid movement. The number is repeated in that quadrant."  << endl;
+        return false;
+      }
+      ir++;
+    }
+    ic++;
+  }
+  return true;
+}
 /*
  * Your main program goes here.
  * first get the parameters, check if parameter size is 2
@@ -133,7 +181,6 @@ int main(int argc, char* argv[]) {
     }
     if(userChoice == "write"){
       int r,c,n;
-
       do{
         cout << "Which row?" << endl;
         cin >> r;
@@ -141,24 +188,20 @@ int main(int argc, char* argv[]) {
       do{
         cout << "Wich column?"<< endl;
         cin >> c;
-       } while (check(c)!= true);
-       if (Original[r][c]!= 0){
-         cout << "That is an original number and you can't change it" << endl;
+      } while (check(c)!= true);
+      if (Original[r][c]!= 0){
+        cout << "That is an original number and you can't change it" << endl;
       } else {
-       do {
-        cout << "Which number?" << endl;
-        cin >> n;
-      } while (check(n) != true);
-       if (Original[r][c] != 0){
-         cout << "That is an original number and you can't erase it" << endl;
-       } else{
-           if (theBoard[r][c] != 0){
-             cout << "You already have a number there." << endl;
-           } else {
-              theBoard[r][c] = n;
-           }
-       }       
-
+        do {
+          cout << "Which number?" << endl;
+          cin >> n;
+        }while (check(n-1) != true || evaluate_rc (n, r, c, theBoard) !=true || evaluate_q (n, r, c, theBoard) !=true );
+        if (theBoard[r][c] != 0){
+          cout << "You already have a number there." << endl;
+        } else {
+          theBoard[r][c] = n;
+        }
+      }
       continue;
     }
     if(userChoice == "erase"){
@@ -183,7 +226,6 @@ int main(int argc, char* argv[]) {
       continue;
     }
     cout << "That was not a valid choice, try again." << endl;
-      } while (userChoice != "quit");
-
+  } while (userChoice != "quit");
   return 0;
 }

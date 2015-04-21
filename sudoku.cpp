@@ -148,22 +148,15 @@ int main(int argc, char* argv[]) {
        do {
         cout << "Which number?" << endl;
         cin >> n;
-<<<<<<< HEAD
-       }while (check(n) =! true);
-       if (Original[r][c]=! 0){
+       }while (check(n) != true);
+       if (Original[r][c] != 0){
          cout << "That is an original number and you can't erase it" << endl;
        } else{
-           if (theBoard[r][c]=! 0){
+           if (theBoard[r][c] != 0){
              cout << "You already have a number there." << endl;
            } else {
               theBoard[r][c] = n;
            }
-=======
-       }while (check(n) != true);
-        theBoard[r][c] = n;
->>>>>>> origin/master
-       }
-
       continue;
     }
     if(userChoice == "erase"){

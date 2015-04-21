@@ -103,33 +103,15 @@ bool evaluate_rc(int n, int r, int c, vector< vector<int> >& theBoard){
 
 bool evaluate_q(int n, int r, int c, vector< vector<int> >& theBoard){
   int kc, kr, ir, ic;
-  if (r/3 ==0){
-    ir=0;
-  }
-  if (r/3 ==1){
-    ir=3;
-  }
-  if (r/3 ==2){
-    ir=6;
-  }
-  if (c/3 ==0){
-    ic=0;
-  }
-  if (c/3 ==1){
-    ic=3;
-  }
-  if (c/3 ==2){
-    ic=6;
-  }
-  for(kc=0; kc < 3; kc++){
-    for(kr=0; kr < 3; kr++){
-      if (theBoard [ir][ic]==n){
+  ir = (r/3)*3;
+  ic = (c/3)*3;
+  for(kc=ic; kc < ic +3; kc++){
+    for(kr=ir; kr < ir +3; kr++){
+      if (theBoard [kr][kc]==n){
         cout << "Invalid movement. The number is repeated in that quadrant."  << endl;
         return false;
       }
-      ir++;
     }
-    ic++;
   }
   return true;
 }

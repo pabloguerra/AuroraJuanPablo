@@ -148,16 +148,16 @@ int main(int argc, char* argv[]) {
        do {
         cout << "Which number?" << endl;
         cin >> n;
-       }while (check(n) =! true);
-       if (Original[r][c]=! 0){
+      } while (check(n) != true);
+       if (Original[r][c] != 0){
          cout << "That is an original number and you can't erase it" << endl;
        } else{
-           if (theBoard[r][c]=! 0){
+           if (theBoard[r][c] != 0){
              cout << "You already have a number there." << endl;
            } else {
               theBoard[r][c] = n;
            }
-       }
+       }       
 
       continue;
     }
@@ -183,7 +183,7 @@ int main(int argc, char* argv[]) {
       continue;
     }
     cout << "That was not a valid choice, try again." << endl;
-  } while (userChoice != "quit");
+      } while (userChoice != "quit");
 
   return 0;
 }

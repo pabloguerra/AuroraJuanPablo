@@ -63,21 +63,37 @@ void populateBoardFromFile(vector< vector<int> >& board, string filename){
  * Each cell is separated by a space
  * NO SPACE at end of row.
  */
-void printBoard(vector< vector<int> >& board){
+void printBoard(vector< vector<int> >& board, vector< vector<int> >& Original){
   // nothing for now, you will implement this for Partial 2 project delivery
   for(int r = 0; r < BOARDSIZE ; r++){
     for(int c = 0; c < BOARDSIZE ; c++){
       if(c > 0){
   cout << " ";
       }
+
+      if (Original[r][c] != 0){
+        // rojo 31
+      } else {
+        // verde 41
+      }
       cout << board[r][c];
+      // reset 91
     }
     cout << endl;
   }
 }
 
-bool check(int value){
-    if (value<BOARDSIZE){
+bool check_rc(int value){
+    if (value >= 0 && value<BOARDSIZE){
+      return true;
+    } else {
+      cout << "Your answer is not valid. Please try again." << endl;
+      return false;
+    }
+}
+
+bool check_num(int value){
+    if (value >= 1 && value<=BOARDSIZE){
       return true;
     } else {
       cout << "Your answer is not valid. Please try again." << endl;
@@ -158,7 +174,7 @@ int main(int argc, char* argv[]) {
     cout << "What would you like to do (print, write, erase, quit): ";
     cin >> userChoice;
     if(userChoice == "print"){
-      printBoard(theBoard);
+      printBoard(theBoard,Original);
       continue;
     }
     if(userChoice == "write"){
@@ -166,18 +182,18 @@ int main(int argc, char* argv[]) {
       do{
         cout << "Which row?" << endl;
         cin >> r;
-      } while (check(r)!= true);
+      } while (check_rc(r)!= true);
       do{
         cout << "Wich column?"<< endl;
         cin >> c;
-      } while (check(c)!= true);
+      } while (check_rc(c)!= true);
       if (Original[r][c]!= 0){
         cout << "That is an original number and you can't change it" << endl;
       } else {
         do {
           cout << "Which number?" << endl;
           cin >> n;
-        }while (check(n-1) != true || evaluate_rc (n, r, c, theBoard) !=true || evaluate_q (n, r, c, theBoard) !=true );
+        }while (check_num(n) != true || evaluate_rc (n, r, c, theBoard) !=true || evaluate_q (n, r, c, theBoard) !=true );
         if (theBoard[r][c] != 0){
           cout << "You already have a number there." << endl;
         } else {
@@ -191,11 +207,11 @@ int main(int argc, char* argv[]) {
       do{
         cout << "Which row?" << endl;
         cin >> r;
-      } while (check(r)!= true);
+      } while (check_rc(r)!= true);
       do{
         cout << "Wich column?"<< endl;
         cin >> c;
-      } while (check(c)!= true);
+      } while (check_rc(c)!= true);
       if (Original[r][c] != 0){
         cout << "That is an original number and you can't erase it" << endl;
       } else {

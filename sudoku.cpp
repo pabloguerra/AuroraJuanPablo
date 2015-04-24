@@ -75,8 +75,14 @@ void printBoard(vector< vector<int> >& board, vector< vector<int> >& Original){
         // rojo 31
         cout << "\x1b[31m";
       } else {
-        // verde 41
-        cout << "\x1b[32m";
+        if (board[r][c] == 0){
+           // white
+           cout << "\x1b[39m";
+        } else {
+          // verde 41
+          cout << "\x1b[32m";
+        }
+       
       }
       cout << board[r][c];
       // reset 91
@@ -182,14 +188,20 @@ int main(int argc, char* argv[]) {
     }
     if(userChoice == "write"){
       int r,c,n;
+      
       do{
-        cout << "Which row?" << endl;
-        cin >> r;
-      } while (check_rc(r)!= true);
-      do{
-        cout << "Wich column?"<< endl;
-        cin >> c;
-      } while (check_rc(c)!= true);
+        do{
+          cout << "Which row?" << endl;
+          cin >> r;
+        } while (check_rc(r)!= true);
+        do{
+          cout << "Wich column?"<< endl;
+          cin >> c;
+        } while (check_rc(c)!= true);
+        if (theBoard[r][c] != 0){
+          cout << "You already have a number there." << endl;
+        }
+      } while (theBoard[r][c] != 0);
       if (Original[r][c]!= 0){
         cout << "That is an original number and you can't change it" << endl;
       } else {
@@ -197,12 +209,8 @@ int main(int argc, char* argv[]) {
           cout << "Which number?" << endl;
           cin >> n;
         }while (check_num(n) != true || evaluate_rc (n, r, c, theBoard) !=true || evaluate_q (n, r, c, theBoard) !=true );
-        if (theBoard[r][c] != 0){
-          cout << "You already have a number there." << endl;
-        } else {
-          theBoard[r][c] = n;
+        theBoard[r][c] = n;
         }
-      }
       continue;
     }
     if(userChoice == "erase"){

@@ -73,14 +73,14 @@ void printBoard(vector< vector<int> >& board, vector< vector<int> >& Original){
 
       if (Original[r][c] != 0){
         // rojo 31
-        cout << \x1b[31m;
+        cout << "\x1b[31m";
       } else {
         // verde 41
-        cout << \x1b[32m;
+        cout << "\x1b[32m";
       }
       cout << board[r][c];
       // reset 91
-    cout <<  \x1b[39;49m;
+    cout <<  "\x1b[39;49m";
     }
     cout << endl;
   }

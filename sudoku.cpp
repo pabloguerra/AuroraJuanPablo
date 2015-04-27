@@ -92,6 +92,18 @@ void printBoard(vector< vector<int> >& board, vector< vector<int> >& Original){
   }
 }
 
+bool winning(vector< vector<int> >& board){
+  for(int r = 0; r < BOARDSIZE ; r++){
+    for(int c = 0; c < BOARDSIZE ; c++){
+      cout << board[r][c] << endl;
+      if(board [r][c]==0){
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 bool check_rc(int value){
     if (value >= 0 && value<BOARDSIZE){
       return true;
@@ -180,9 +192,14 @@ int main(int argc, char* argv[]) {
   //    quit (quit the program)
   string userChoice = "";
   do{
-    cout << "What would you like to do (print, write, erase, quit): ";
+    cout << "What would you like to do (print, write, erase, reset, quit): ";
     cin >> userChoice;
     if(userChoice == "print"){
+      printBoard(theBoard,Original);
+      continue;
+    }
+    if(userChoice == "reset"){
+      populateBoardFromFile(theBoard,filename);
       printBoard(theBoard,Original);
       continue;
     }
@@ -235,6 +252,9 @@ int main(int argc, char* argv[]) {
       continue;
     }
     cout << "That was not a valid choice, try again." << endl;
-  } while (userChoice != "quit");
+  } while (userChoice != "quit"|| winning(theBoard)==false);
+  if (winning(theBoard)==true){
+  cout << "Congratulations! You have complete the Sudoku!!" << endl;
+}
   return 0;
 }

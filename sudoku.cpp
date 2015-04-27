@@ -192,20 +192,19 @@ int main(int argc, char* argv[]) {
   //    quit (quit the program)
   string userChoice = "";
   do{
-    cout << "What would you like to do (print, write, erase, reset, quit): ";
+    printBoard(theBoard,Original);
+    cout << "What would you like to do (print, write, erase, reset, quit, history): ";
     cin >> userChoice;
-    if(userChoice == "print"){
-      printBoard(theBoard,Original);
+    if(userChoice == "history"){
+      cout << "Sudoku (数独 sūdoku?, Digit-single), originally called Number Place,is a logic-based, combinatorial number-placement puzzle. The objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 sub-grids that compose the grid (also called 'boxes', 'blocks', 'regions', or 'sub-squares') contains all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a unique solution." << endl;
       continue;
     }
     if(userChoice == "reset"){
       populateBoardFromFile(theBoard,filename);
-      printBoard(theBoard,Original);
       continue;
     }
     if(userChoice == "write"){
       int r,c,n;
-      
       do{
         do{
           cout << "Which row?" << endl;

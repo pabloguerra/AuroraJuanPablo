@@ -95,7 +95,6 @@ void printBoard(vector< vector<int> >& board, vector< vector<int> >& Original){
 bool winning(vector< vector<int> >& board){
   for(int r = 0; r < BOARDSIZE ; r++){
     for(int c = 0; c < BOARDSIZE ; c++){
-      cout << board[r][c] << endl;
       if(board [r][c]==0){
         return false;
       }
@@ -191,12 +190,12 @@ int main(int argc, char* argv[]) {
   //    erase (ask user which position they want to erase), must not erase original values
   //    quit (quit the program)
   string userChoice = "";
-  do{
+  while (winning(theBoard)==false && userChoice != "quit"){
     printBoard(theBoard,Original);
-    cout << "What would you like to do (print, write, erase, reset, quit, history): ";
+    cout << "What would you like to do (write, erase, reset, quit, history): ";
     cin >> userChoice;
     if(userChoice == "history"){
-      cout << "Sudoku (数独 sūdoku?, Digit-single), originally called Number Place,is a logic-based, combinatorial number-placement puzzle. The objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 sub-grids that compose the grid (also called 'boxes', 'blocks', 'regions', or 'sub-squares') contains all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a unique solution." << endl;
+      cout << endl << "Sudoku (数独 sūdoku?, Digit-single), originally called Number Place,is a logic-based, combinatorial number-placement puzzle. The objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 sub-grids that compose the grid (also called 'boxes', 'blocks', 'regions', or 'sub-squares') contains all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a unique solution." << endl << endl;
       continue;
     }
     if(userChoice == "reset"){
@@ -251,7 +250,7 @@ int main(int argc, char* argv[]) {
       continue;
     }
     cout << "That was not a valid choice, try again." << endl;
-  } while (userChoice != "quit"|| winning(theBoard)==false);
+  }
   if (winning(theBoard)==true){
   cout << "Congratulations! You have complete the Sudoku!!" << endl;
 }

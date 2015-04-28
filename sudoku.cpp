@@ -252,6 +252,7 @@ int main(int argc, char* argv[]) {
     cout << "That was not a valid choice, try again." << endl;
   }
   if (winning(theBoard)==true){
+  printBoard(theBoard,Original);
   cout << "Congratulations! You have complete the Sudoku!!" << endl;
 }
   return 0;
